@@ -12,8 +12,8 @@ export class FileuploadserviceService {
 
   constructor(private http: HttpClient) { }
 
-  uploadImage(image: any) {
-    return this.http.post(`${this.baseApiUrl}`, image)
+  uploadImage(images: any) {
+    return this.http.post(`${this.baseApiUrl}`, images)
   }
   getImage() {
     return this.http.get(`${this.urlGet}`)
