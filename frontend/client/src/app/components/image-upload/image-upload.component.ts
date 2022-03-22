@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import {Cloudinary, CloudinaryImage} from '@cloudinary/url-gen';
-// import {URLConfig} from '@cloudinary/url-gen';
-// import {CloudConfig} from '@cloudinary/url-gen';
+import {Cloudinary, CloudinaryImage} from '@cloudinary/url-gen';
+import {URLConfig} from '@cloudinary/url-gen';
+import {CloudConfig} from '@cloudinary/url-gen';
 
 @Component({
   selector: 'app-image-upload',
