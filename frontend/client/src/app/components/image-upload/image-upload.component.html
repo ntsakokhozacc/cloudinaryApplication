@@ -1,1 +1,13 @@
-<p>image-upload works!</p>
+<h1>hi</h1>
+<!-- <advanced-image [cldImg]="img"></advanced-image> -->
+<!-- <img src="http://res.cloudinary.com/dvdbcvuu5/image/upload/v1646993548/images/hciyegcazahxqq4osbo0.png"> -->
+
+<form [formGroup]="myForm" (ngSubmit)="uploadImage()">  
+    <label class="form-label" for="customFile">Default file input example</label>
+    <input type="file" class="form-control" name="images" id="customFile" (change)="selectThisImage($event)"/>
+    <button type="submit">upload</button>
+</form>
+<p>heueugfeuy</p>
+
+<div class="img-wrapper" style="width: 20px; height: 50px">
+</div>
