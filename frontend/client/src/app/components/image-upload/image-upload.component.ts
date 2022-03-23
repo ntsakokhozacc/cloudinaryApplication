@@ -21,6 +21,7 @@ export class ImageUploadComponent implements OnInit {
   //  img!: CloudinaryImage;
   file: any = '';
   myForm: any;
+  myFormVideo:any;
   //new FormGroup({
     
   // });;
@@ -41,11 +42,14 @@ export class ImageUploadComponent implements OnInit {
       images: ''
     })
 
+    this.myFormVideo = this.fb.group({
+      videos: ''
+    })
+
     
   }
 
   uploadImage() {
-
    
     console.log(this.myForm.value.images)
 
@@ -58,11 +62,40 @@ export class ImageUploadComponent implements OnInit {
        var dat = data.toString()
        let img = document.createElement('img')
        img.setAttribute('src', dat)
-       console.log(img)
+       console.log('this image')
+       console.log(img.src)
+       console.log('end of image')
        
        if(document.querySelector('.img-wrapper') != null ) {  
         document.querySelector('.img-wrapper')?.appendChild(img)
        }
+       
+    })
+
+  }
+
+
+
+  uploadVideo() {
+   
+    console.log(this.myFormVideo.value.videos)
+
+    const formData = new FormData()
+    formData.append('videos', this.file)
+    console.log(formData.get('videos'));
+
+    this.fileuploadservice.uploadVideo(formData).subscribe((data) => {
+       console.log(data, 'uploaded');
+       var dat = data.toString()
+       let video = document.createElement('video')
+       video.setAttribute('src', dat)
+       console.log('this video')
+       console.log(video.src)
+       console.log('end of video')
+       
+      //  if(document.querySelector('.img-wrapper') != null ) {  
+      //   document.querySelector('.img-wrapper')?.appendChild(video)
+      //  }
        
     })
 

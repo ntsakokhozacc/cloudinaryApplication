@@ -60,6 +60,30 @@ app.post('/api/upload',upload.single("images"), async (req, res) => {
     }
 });
 
+const uploader = multer({ dest: 'videos/' })
+app.post('/api/upload/video',uploader.single("videos"), async (req, res) => {
+    const videos = req.file
+    console.log(videos);
+   try {
+       const fileStr = req.file.path;
+       console.log(fileStr)
+       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+           folder: 'videos',
+           resource_type: 'video'
+       });
+       const filepath = req.file.path;
+       fs.unlinkSync(filepath);
+
+       console.log(uploadResponse);
+       
+       res.json(uploadResponse.url);
+       
+   } catch (err) {
+       console.error(err);res.json({ msg: 'pdf uploaded' });
+       res.status(500).json({ err: 'Something went wrong with the pdf' });
+   }
+});
+
 app.listen(process.env.PORT,()=>{
     console.log("server running on port 4000")
 }

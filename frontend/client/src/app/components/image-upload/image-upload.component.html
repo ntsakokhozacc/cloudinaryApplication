@@ -1,7 +1,7 @@
 
 <!-- <advanced-image [cldImg]="img"></advanced-image> -->
-<!-- <img src="http://res.cloudinary.com/dvdbcvuu5/image/upload/v1646993548/images/hciyegcazahxqq4osbo0.png"> -->
-<P>please attach your file below:</P>
+<img src="https://res.cloudinary.com/dceiszqyq/image/upload/v1647005070/cld-sample.jpg" style="width:250px">
+<P>Please attach your file below:</P>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <form [formGroup]="myForm" (ngSubmit)="uploadImage()">  
     <label class="form-label" for="customFile">Default file input example</label>
@@ -9,10 +9,18 @@
     <button type="submit">upload</button>
 </form>
 
-<div class="spinner-border text-secondary" role="status">
+
+<form [formGroup]="myFormVideo" (ngSubmit)="uploadVideo()">  
+  <label class="form-label" for="customFile">Default video input example</label>
+  <input type="file" class="form-control" name="videos" id="customFile" (change)="selectThisImage($event)"/>
+  <button type="submit">upload</button>
+</form>
+
+<!-- <div class="spinner-border text-secondary" role="status">
     <span class="sr-only">Loading...</span>
-  </div>
+  </div> -->
+
   
 
-<div class="img-wrapper" style="width: 20px; height: 50px">
-</div>
+<!-- <div class="img-wrapper" style="width: 20px; height: 50px">
+</div> -->
