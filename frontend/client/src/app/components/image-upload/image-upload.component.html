@@ -16,10 +16,14 @@
   <button type="submit">upload</button>
 </form>
 
-<!-- <div class="spinner-border text-secondary" role="status">
+<div *ngIf="spinnerState" class="spinner-border text-secondary" role="status">
     <span class="sr-only">Loading...</span>
-  </div> -->
+  </div>
 
+
+  <video width="320" height="240" controls>
+    <source src="{video.src}" width="400" height="300">
+  </video>
   
 
 <!-- <div class="img-wrapper" style="width: 20px; height: 50px">

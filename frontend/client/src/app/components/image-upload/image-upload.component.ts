@@ -22,6 +22,8 @@ export class ImageUploadComponent implements OnInit {
   file: any = '';
   myForm: any;
   myFormVideo:any;
+  spinnerState:boolean=false;
+  video:any;
   //new FormGroup({
     
   // });;
@@ -77,7 +79,8 @@ export class ImageUploadComponent implements OnInit {
 
 
   uploadVideo() {
-   
+
+   this.spinnerState=true
     console.log(this.myFormVideo.value.videos)
 
     const formData = new FormData()
@@ -87,12 +90,12 @@ export class ImageUploadComponent implements OnInit {
     this.fileuploadservice.uploadVideo(formData).subscribe((data) => {
        console.log(data, 'uploaded');
        var dat = data.toString()
-       let video = document.createElement('video')
-       video.setAttribute('src', dat)
+       this.video = document.createElement('video')
+       this.video.setAttribute('src', dat)
        console.log('this video')
-       console.log(video.src)
+       console.log(this.video.src)
        console.log('end of video')
-       
+       this.spinnerState=false
       //  if(document.querySelector('.img-wrapper') != null ) {  
       //   document.querySelector('.img-wrapper')?.appendChild(video)
       //  }
