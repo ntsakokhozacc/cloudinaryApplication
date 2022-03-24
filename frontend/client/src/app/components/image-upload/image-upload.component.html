@@ -17,6 +17,13 @@
   <button type="submit">upload</button>
 </form>
 
+
+<form [formGroup]="myFormDocument" (ngSubmit)="uploadDocument()">  
+    <label class="form-label" for="customFile">Default document input example</label>
+    <input type="file" class="form-control" name="videos" id="customFile" (change)="selectThisImage($event)"/>
+    <button type="submit">upload</button>
+  </form>
+
 <div *ngIf="spinnerState" class="spinner-border text-secondary" role="status">
     <span class="sr-only">Loading...</span>
   </div>

@@ -22,8 +22,10 @@ export class ImageUploadComponent implements OnInit {
   file: any = '';
   myForm: any;
   myFormVideo:any;
+  myFormDocument:any;
   spinnerState:boolean=false;
   video:any;
+  document:any;
   //new FormGroup({
     
   // });;
@@ -46,6 +48,10 @@ export class ImageUploadComponent implements OnInit {
 
     this.myFormVideo = this.fb.group({
       videos: ''
+    })
+
+    this.myFormDocument = this.fb.group({
+      documents: ''
     })
 
     
@@ -104,8 +110,38 @@ export class ImageUploadComponent implements OnInit {
 
   }
 
+  uploadDocument() {
+
+    this.spinnerState=true
+     console.log(this.myFormDocument.value.documents)
+ 
+     const formData = new FormData()
+     formData.append('documents', this.file)
+     console.log(formData.get('documents'));
+ 
+     this.fileuploadservice.uploadDocument(formData).subscribe((data) => {
+        console.log(data, 'uploaded');
+
+        // var dat = data.toString()
+        // this.document = document.createElement('document')
+        // this.document.setAttribute('src', dat)
+        console.log('this document')
+        
+        console.log(data)
+        console.log('end of documents')
+        this.spinnerState=false
+       //  if(document.querySelector('.img-wrapper') != null ) {  
+       //   document.querySelector('.img-wrapper')?.appendChild(video)
+       //  }
+        
+     })
+ 
+   }
+
   selectThisImage(myEvent: any) {
     this.file = myEvent.target.files[0];
+    //console.log("the file :",this.file.name);
+    
   }
 
 

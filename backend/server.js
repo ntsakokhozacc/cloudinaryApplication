@@ -72,6 +72,35 @@ app.post('/api/upload/video',uploader.single("videos"), async (req, res) => {
            resource_type: 'video'
        });
        const filepath = req.file.path;
+       console.log('file path:');
+       console.log(filepath);
+       fs.unlinkSync(filepath);
+
+       console.log(uploadResponse);
+       
+       res.json(uploadResponse.url);
+       
+   } catch (err) {
+       console.error(err);res.json({ msg: 'video uploaded' });
+       res.status(500).json({ err: 'Something went wrong with the video' });
+   }
+});
+
+const docUploader = multer({ dest: 'documents/' })
+app.post('/api/upload/document',docUploader.single("documents"), async (req, res) => {
+    const documents = req.file
+    console.log(documents);
+   try {
+       const fileStr = req.file.path;
+       console.log(fileStr)
+       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+           folder: 'documents',
+           resource_type: 'raw'
+       });
+       
+       const filepath = req.file.path;
+       console.log('file path:');
+       console.log(filepath);
        fs.unlinkSync(filepath);
 
        console.log(uploadResponse);
