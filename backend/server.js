@@ -79,8 +79,8 @@ app.post('/api/upload/video',uploader.single("videos"), async (req, res) => {
        res.json(uploadResponse.url);
        
    } catch (err) {
-       console.error(err);res.json({ msg: 'pdf uploaded' });
-       res.status(500).json({ err: 'Something went wrong with the pdf' });
+       console.error(err);res.json({ msg: 'video uploaded' });
+       res.status(500).json({ err: 'Something went wrong with the video' });
    }
 });
 
